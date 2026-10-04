@@ -1,0 +1,70 @@
+name: Freetab
+options:
+  bundleIdPrefix: io.github.sergioarojasm98
+  deploymentTarget:
+    iOS: "26.0"
+    macOS: "26.0"
+  createIntermediateGroups: true
+  developmentLanguage: en
+  knownRegions: [en, es, Base]
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    DEVELOPMENT_TEAM: 4HK3699TX4
+    CODE_SIGN_STYLE: Automatic
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    STRING_CATALOG_GENERATE_SYMBOLS: NO
+targets:
+  Freetab:
+    type: application
+    supportedDestinations: [iOS, macOS]
+    sources:
+      - path: Freetab
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.sergioarojasm98.freetab
+        PRODUCT_NAME: Freetab
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Freetab
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.finance
+        INFOPLIST_KEY_NSCameraUsageDescription: "Freetab uses the camera to photograph receipts and transfer screenshots as evidence of a payment."
+        INFOPLIST_KEY_NSFaceIDUsageDescription: "Freetab can lock itself with Face ID so only you can see your accounts."
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_ENTITLEMENTS: Freetab/Support/Freetab.entitlements
+        ENABLE_HARDENED_RUNTIME: YES
+        ENABLE_APP_SANDBOX: YES
+        ENABLE_OUTGOING_NETWORK_CONNECTIONS: YES
+        ENABLE_USER_SELECTED_FILES: readonly
+    info:
+      path: Freetab/Support/Info.plist
+      properties:
+        UIBackgroundModes: [remote-notification]
+  FreetabTests:
+    type: bundle.unit-test
+    supportedDestinations: [iOS, macOS]
+    sources:
+      - path: FreetabTests
+    dependencies:
+      - target: Freetab
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.sergioarojasm98.freetab.tests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  Freetab:
+    build:
+      targets:
+        Freetab: all
+        FreetabTests: [test]
+    test:
+      targets:
+        - FreetabTests

@@ -1,0 +1,12 @@
+included: [Freetab, FreetabTests]
+line_length:
+  warning: 140
+  ignores_comments: true
+disabled_rules:
+  - trailing_comma
+identifier_name:
+  excluded: [es, id, en, us, co]
+large_tuple:
+  warning: 5
+force_try:
+  severity: warning
